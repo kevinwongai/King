@@ -1,0 +1,108 @@
+# Project Setting
+king:
+  name: King
+  version: V1.0.0
+  copyright: 2020
+  # Upload Path （Windows D:/king/upload,Linux /home/king/upload)
+  profile: /home/king/upload
+  # Get IP Address
+  ipAddress: true
+
+# Development Environment Setting
+server:
+  # HTTP Port
+  port: 8080
+  servlet:
+    context-path: /
+  tomcat:
+    uri-encoding: UTF-8
+    # Tomcat Max Threads (default:200)
+    max-threads: 800
+    # Tomcat Initialize Threads (default:25)
+    min-spare-threads: 30
+
+# Spring Setting
+spring:
+  # dev|test|prod
+  profiles:
+    active: dev
+  # Resource Messages
+  messages:
+    # I18N Resource Path
+    basename: i18n/messages
+  # File Upload
+  servlet:
+     multipart:
+       # Single File Max-Size
+       max-file-size:  10MB
+       # Total Files Max-Size
+       max-request-size:  50MB
+  # Devtools
+  devtools:
+    restart:
+      # Hot Deployment
+      enabled: true
+  # Redis Setting
+  redis:
+    # Host
+    host: localhost
+    # Port (default:6379)
+    port: 6379
+    password:
+    timeout: 10s
+    lettuce:
+      pool:
+        # Connection Pool Smallest Idle Connections
+        min-idle: 0
+        # Connection Pool Largest Idle Connections
+        max-idle: 8
+        # Connection Pool Maximum Database Connections
+        max-active: 8
+        # Connection Pool Maximum Blocking Wait Time (Negative Value To No Limit)
+        max-wait: -1ms
+
+# Token Setting
+token:
+    # Custom Token Mark
+    header: Authorization
+    # Token Secret
+    secret: abcdefghijklmnopqrstuvwxyz
+    # Token Expire Time (default 30min)
+    expireTime: 30
+  
+# MyBatis Setting
+mybatis:
+    typeAliasesPackage: tech.kevinwong.**.domain
+    mapperLocations: classpath*:mybatis/**/*Mapper.xml
+    configLocation: classpath:mybatis/mybatis-config.xml
+
+# PageHelper Setting
+pagehelper: 
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  
+# Code Generate Setting
+gen: 
+  author: Kevin
+  # Package Name
+  packageName: tech.kevinwong.modules.system
+  # Auto Remove Prefix
+  autoRemovePre: false
+  # Table Prefix (xx_,xx_,xx_)
+  tablePrefix: sys_
+
+# XSS Setting
+xss:
+  # XSS Filter Enabled
+  enabled: true
+  # Excludes UIL (/XX/*,/XX/*,/XX/*)
+  excludes: /system/notice/*
+  # Patterns UIL (/XX/*,/XX/*,/XX/*)
+  urlPatterns: /system/*,/monitor/*,/tool/*
+
+# Logging Setting
+logging:
+  level:
+    tech.kevinwong: debug
+    org.springframework: warn
